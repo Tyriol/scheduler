@@ -1,0 +1,11 @@
+{
+  "name": "scheduler",
+  "version": "0.0.1",
+  "description": "Tool to help coordinate trips to the office (for Hollaway) during Covid-19",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Ryan Smith",
+  "license": "ISC"
+}
