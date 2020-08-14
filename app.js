@@ -1,9 +1,20 @@
 const   express     = require('express'),
         bodyParser  = require('body-parser'),
+        mongoose    = require('mongoose'),
         app         = express();
 
+//config
+mongoose.connect('mongodb://localhost:27017/restful_blog_app', {useNewUrlParser: true, useUnifiedTopology:true, useFindAndModify: false});        
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
+
+//schema setup
+const scheduleSchema = new mongoose.Schema({
+    name: String,
+    date: Date,
+    duration: Number
+});
+const Timeslot = mongoose.model('Timeslot', scheduleSchema);
 
 //index route
 app.get('/', function(req, res){
