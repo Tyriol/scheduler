@@ -4,6 +4,12 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Holloway Studio Office Scheduler</title>
+    <style>
+        body {
+            font-family: 'Courier New';
+            font-size: 1em;
+        }
+    </style>
 </head>
 <body>
     <header>
@@ -11,7 +17,23 @@
         <h1>Scheduler</h1>
     </header>
     <main>
-        <h1>Availability</h1>
+        <h1>Booked Slots</h1>
+        <table>
+            <tr>
+                <thead>Name</thead>
+                <thead>Date</thead>
+                <thead>Duration</thead>
+            </tr>
+            <% slots.forEach((slot) => { %>
+            <tr>
+                <td><%= slot.name %></td>
+                <td><%= slot.date.toDateString() %></td>
+                <td><%= slot.duration %> min</td>
+            </tr>
+            <% }); %>
+        </table>
+
+        <a href="/">Home</a>
     </main>
 </body>
 </html>

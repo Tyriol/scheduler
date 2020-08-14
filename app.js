@@ -23,7 +23,13 @@ app.get('/', function(req, res){
 
 //show availability page
 app.get('/availability', function(req, res){
-    res.render('availability');
+    Timeslot.find({}, function(err, slots){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('availability', {slots: slots});
+        };
+    });
 });
 
 //show book page
