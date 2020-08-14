@@ -7,6 +7,7 @@ const   express     = require('express'),
 mongoose.connect('mongodb://localhost:27017/hollaway_scheduler', {useNewUrlParser: true, useUnifiedTopology:true, useFindAndModify: false});        
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
+app.use(express.static('public'));
 
 //schema setup
 const scheduleSchema = new mongoose.Schema({

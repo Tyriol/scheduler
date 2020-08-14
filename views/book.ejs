@@ -1,22 +1,32 @@
 <%- include('partials/header') %>
 
     <main>
-        <h1>Book a slot</h1>
-        <form action="/book" method="POST">
-            <label for="name">
-                Name:
-                <input type="text" name="name" id="name">
-            </label><br>
-            <label for="date">
-                Date:
-                <input type="date" name="date" id="date">
-            </label><br>    
-            <label for="duration">
-                Duration:
-                <input type="number" name="duration" id="duration"> minutes
-            </label><br>
-            <button>Submit</button>
-        </form>
+        <div class="ui container">
+            <h1 class="ui center aligned block header">Book a slot</h1>
+            <form class="ui form" action="/book" method="POST">
+                <div class="field">
+                    <label for="name">
+                        Name:
+                        <input type="text" name="name" id="name" required>
+                    </label>
+                </div>           
+                <div class="field">
+                    <label for="date">
+                        Date:
+                        <input type="date" name="date" id="date" required>
+                    </label>
+                </div>                  
+                <div class="field">
+                    <label for="duration">
+                        Duration:
+                        <input type="number" name="duration" id="duration" placeholder="minutes" required>
+                    </label>
+                </div>
+                <button class="ui button">Submit</button>
+            </form>
+
+            <button id="home" class="ui button"><a href="/">Home</a></button>
+        </div>
     </main>
 
 <%- include('partials/footer') %>

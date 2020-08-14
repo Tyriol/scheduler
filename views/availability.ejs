@@ -1,23 +1,27 @@
 <%- include('partials/header') %>
 
     <main>
-        <h1>Booked Slots</h1>
-        <table>
-            <tr>
-                <thead>Name</thead>
-                <thead>Date</thead>
-                <thead>Duration</thead>
-            </tr>
-            <% slots.forEach((slot) => { %>
-            <tr>
-                <td><%= slot.name %></td>
-                <td><%= slot.date.toDateString() %></td>
-                <td><%= slot.duration %> min</td>
-            </tr>
-            <% }); %>
-        </table>
-
-        <a href="/">Home</a>
+        <div class="ui container">
+            <h1 class="ui center aligned block header">Booked Slots</h1>
+            <table class="ui celled table">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Date</th>
+                        <th>Duration</th>
+                    </tr>
+                </thead>
+                <% slots.forEach((slot) => { %>
+                <tr>
+                    <td><%= slot.name %></td>
+                    <td><%= slot.date.toDateString() %></td>
+                    <td><%= slot.duration %> min</td>
+                </tr>
+                <% }); %>
+            </table>
+    
+            <button id="home" class="ui button"><a href="/">Home</a></button>
+        </div>
     </main>
 
 <%- include('partials/footer') %>
