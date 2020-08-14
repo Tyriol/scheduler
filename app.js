@@ -4,7 +4,7 @@ const   express     = require('express'),
         app         = express();
 
 //config
-mongoose.connect('mongodb://localhost:27017/restful_blog_app', {useNewUrlParser: true, useUnifiedTopology:true, useFindAndModify: false});        
+mongoose.connect('mongodb://localhost:27017/hollaway_scheduler', {useNewUrlParser: true, useUnifiedTopology:true, useFindAndModify: false});        
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 
@@ -21,14 +21,31 @@ app.get('/', function(req, res){
     res.render('index');
 });
 
-//route to availability page
+//show availability page
 app.get('/availability', function(req, res){
     res.render('availability');
 });
 
-//route to book page
+//show book page
 app.get('/book', function(req, res){
     res.render('book');
+});
+
+//submit new timeslot
+app.post('/book', function(req, res){
+    //get data from form and add to timeslot array
+    let name = req.body.name;
+    let date = req.body.date;
+    let duration = req.body.duration; 
+    let newTimeSlot = {name: name, date: date, duration: duration};
+    //create new timeslot
+    Timeslot.create(newTimeSlot, (err, newSlot) => {
+        if(err){
+            console.log(err);
+        } else {
+            res.redirect('/availability');
+        };
+    });  
 });
 
 //listener

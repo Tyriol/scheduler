@@ -12,7 +12,7 @@
     </header>
     <main>
         <h1>Book a slot</h1>
-        <form action="">
+        <form action="/book" method="POST">
             <label for="name">
                 Name:
                 <input type="text" name="name" id="name">
@@ -23,8 +23,7 @@
             </label><br>    
             <label for="duration">
                 Duration:
-                <input type="number" name="duration" id="duration">hours
-                <input type="number" name="duration" id="duration">minutes
+                <input type="number" name="duration" id="duration"> minutes
             </label><br>
             <button>Submit</button>
         </form>
