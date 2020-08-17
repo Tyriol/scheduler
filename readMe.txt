@@ -1,6 +1,6 @@
 Scheduler to make it accessible to see who is in the office and make it easy to book a slot for going in to the office
 
-Requirements
+Initial Requirements
 
 >> Book a time to be in the office
     >> Date
@@ -13,3 +13,9 @@ Requirements
     >> start time and duration OR selctable blocks
 
 >> Delete a booked slot
+>> Update a booked slot
+
+Nice to have
+
+>> Authentication
+>> Notifications
