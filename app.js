@@ -70,8 +70,27 @@ app.get('/slots/:id', function(req, res) {
 });
 
 //edit
+app.get('/slots/:id/edit', function(req, res){
+    Timeslot.findById(req.params.id, function(err, editSlot){
+        if(err){
+            console.log(err);
+        } else {
+            res.render('edit', {slot: editSlot});
+        };
+    });
+});
 
 //update
+app.put('/slots/:id', function(req, res){
+    Timeslot.findByIdAndUpdate(req.params.id, req.body, function(err, updateSlot){
+        if(err){
+            console.log(err);
+            alert('There was an error, try again');
+        } else {
+            res.redirect('/slots');
+        };
+    });
+});
 
 //delete
 app.delete('/slots/:id', function(req, res){

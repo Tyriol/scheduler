@@ -6,6 +6,10 @@ button#home {
     margin-top: 1em;
 }
 
+#delete {
+    display: inline;
+}
+
 .thin {
     width: 11em;
 }

@@ -1,0 +1,32 @@
+<%- include('partials/header') %>
+
+<main>
+    <div class="ui container">
+        <h1 class="ui center aligned block header">Book a slot</h1>
+        <form class="ui form" action="/slots/<%=slot._id%>?_method=PUT" method="POST">
+            <div class="field">
+                <label for="name">
+                    Name:
+                    <input type="text" name="name" id="name" value="<%=slot.name%>" required>
+                </label>
+            </div>           
+            <div class="field">
+                <label for="date">
+                    Date:
+                    <input type="date" name="date" id="date" value="<%=slot.date.toISOString().slice(0,10)%>" required>
+                </label>
+            </div>                  
+            <div class="field">
+                <label for="duration">
+                    Duration:
+                    <input type="number" name="duration" id="duration" placeholder="minutes" value="<%=slot.duration%>" required>
+                </label>
+            </div>
+            <button class="ui button">Submit</button>
+        </form>
+
+        <button id="home" class="ui button"><a href="/">Home</a></button>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

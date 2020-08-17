@@ -3,11 +3,21 @@
 <main>
     <div class="ui container">
         <h1 class="ui center aligned block header">Manage your booking</h1>
-        <p><%= slot.name %></p>
-        <p><%= slot.date.toDateString() %></p>
-        <p><%= slot.duration %></p>
-        
-        
+        <div class="ui segment">
+            <div class="ui medium header">
+                Name:
+            </div>
+            <p><%= slot.name %></p>
+            <div class="ui medium header">
+                Date:
+            </div>
+            <p><%= slot.date.toDateString() %></p>
+            <div class="ui medium header">
+                Duration:
+            </div>
+            <p><%= slot.duration %></p>
+        </div>
+        <a class="ui orange basic button" href="/slots/<%= slot._id %>/edit">Edit</a>
         <form  id="delete" action="/slots/<%= slot._id %>?_method=DELETE" method="POST">
             <button class="ui red basic button">Delete</button>
         </form>
