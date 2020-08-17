@@ -9,6 +9,7 @@
                         <th>Name</th>
                         <th>Date</th>
                         <th>Duration</th>
+                        <th></th>
                     </tr>
                 </thead>
                 <% slots.forEach((slot) => { %>
@@ -16,6 +17,7 @@
                     <td><%= slot.name %></td>
                     <td><%= slot.date.toDateString() %></td>
                     <td><%= slot.duration %> min</td>
+                    <td class="thin"><a class="ui basic blue button" href="/slots/<%=slot._id%>">Manage  <i class="angle double right icon"></i></a></td>
                 </tr>
                 <% }); %>
             </table>

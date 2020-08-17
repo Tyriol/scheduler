@@ -1,0 +1,17 @@
+<%- include('partials/header') %>
+
+<main>
+    <div class="ui container">
+        <h1 class="ui center aligned block header">Manage your booking</h1>
+        <p><%= slot.name %></p>
+        <p><%= slot.date.toDateString() %></p>
+        <p><%= slot.duration %></p>
+        
+        
+        <form  id="delete" action="/slots/<%= slot._id %>?_method=DELETE" method="POST">
+            <button class="ui red basic button">Delete</button>
+        </form>
+    </div>
+</main>
+
+<%- include('partials/footer') %>

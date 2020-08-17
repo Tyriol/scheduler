@@ -5,3 +5,7 @@ body {
 button#home {
     margin-top: 1em;
 }
+
+.thin {
+    width: 11em;
+}

@@ -1,6 +1,7 @@
 const   express     = require('express'),
         bodyParser  = require('body-parser'),
         mongoose    = require('mongoose'),
+        methodOverride = require('method-override'),
         app         = express();
 
 //config
@@ -8,6 +9,7 @@ mongoose.connect('mongodb://localhost:27017/hollaway_scheduler', {useNewUrlParse
 app.set('view engine', 'ejs');
 app.use(bodyParser.urlencoded({extended:true}));
 app.use(express.static('public'));
+app.use(methodOverride('_method'));
 
 //schema setup
 const scheduleSchema = new mongoose.Schema({
@@ -22,18 +24,18 @@ app.get('/', function(req, res){
     res.render('index');
 });
 
-//show availability page
-app.get('/availability', function(req, res){
+//show booked time slots
+app.get('/slots', function(req, res){
     Timeslot.find({}, function(err, slots){
         if(err){
             console.log(err);
         } else {
-            res.render('availability', {slots: slots});
+            res.render('slots', {slots: slots});
         };
     });
 });
 
-//show book page
+//show booking page
 app.get('/book', function(req, res){
     res.render('book');
 });
@@ -50,9 +52,37 @@ app.post('/book', function(req, res){
         if(err){
             console.log(err);
         } else {
-            res.redirect('/availability');
+            res.redirect('/slots');
         };
     });  
+});
+
+//show management screen
+app.get('/slots/:id', function(req, res) {
+    Timeslot.findById(req.params.id, function(err, selectedSlot){
+        if(err){
+            console.log(err);
+            alert('There was an error, try again');
+        } else {
+            res.render('show', {slot: selectedSlot});
+        };
+    });
+});
+
+//edit
+
+//update
+
+//delete
+app.delete('/slots/:id', function(req, res){
+    Timeslot.findByIdAndDelete(req.params.id, function(err){
+        if(err){
+            console.log(err);
+            alert('There was an error, try again');
+        } else {
+            res.redirect('/slots');
+        };
+    });
 });
 
 //listener
