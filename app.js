@@ -20,13 +20,13 @@ const scheduleSchema = new mongoose.Schema({
 const Timeslot = mongoose.model('Timeslot', scheduleSchema);
 
 //index route
-app.get('/', function(req, res){
+app.get('/', (req, res) => {
     res.render('index');
 });
 
 //show booked time slots
-app.get('/slots', function(req, res){
-    Timeslot.find({}, function(err, slots){
+app.get('/slots', (req, res) => {
+    Timeslot.find({}, (err, slots) => {
         if(err){
             console.log(err);
         } else {
@@ -36,12 +36,12 @@ app.get('/slots', function(req, res){
 });
 
 //show booking page
-app.get('/book', function(req, res){
+app.get('/book', (req, res) => {
     res.render('book');
 });
 
 //submit new timeslot
-app.post('/book', function(req, res){
+app.post('/book', (req, res) => {
     //get data from form and add to timeslot array
     let name = req.body.name;
     let date = req.body.date;
@@ -58,8 +58,8 @@ app.post('/book', function(req, res){
 });
 
 //show management screen
-app.get('/slots/:id', function(req, res) {
-    Timeslot.findById(req.params.id, function(err, selectedSlot){
+app.get('/slots/:id', (req, res) => {
+    Timeslot.findById(req.params.id, (err, selectedSlot) => {
         if(err){
             console.log(err);
             alert('There was an error, try again');
@@ -70,8 +70,8 @@ app.get('/slots/:id', function(req, res) {
 });
 
 //edit
-app.get('/slots/:id/edit', function(req, res){
-    Timeslot.findById(req.params.id, function(err, editSlot){
+app.get('/slots/:id/edit', (req, res) => {
+    Timeslot.findById(req.params.id, (err, editSlot) => {
         if(err){
             console.log(err);
         } else {
@@ -81,8 +81,8 @@ app.get('/slots/:id/edit', function(req, res){
 });
 
 //update
-app.put('/slots/:id', function(req, res){
-    Timeslot.findByIdAndUpdate(req.params.id, req.body, function(err, updateSlot){
+app.put('/slots/:id', (req, res) => {
+    Timeslot.findByIdAndUpdate(req.params.id, req.body, (err, updateSlot) => {
         if(err){
             console.log(err);
             alert('There was an error, try again');
@@ -93,8 +93,8 @@ app.put('/slots/:id', function(req, res){
 });
 
 //delete
-app.delete('/slots/:id', function(req, res){
-    Timeslot.findByIdAndDelete(req.params.id, function(err){
+app.delete('/slots/:id', (req, res) => {
+    Timeslot.findByIdAndDelete(req.params.id, (err) => {
         if(err){
             console.log(err);
             alert('There was an error, try again');
@@ -106,6 +106,6 @@ app.delete('/slots/:id', function(req, res){
 
 //listener
 const port = process.env.PORT || 3000;
-app.listen(port, function() {
+app.listen(port, () => {
     console.log('Hollaway Scheduler');
 });
